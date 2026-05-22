@@ -30,6 +30,15 @@ struct SetupBlocksView: View {
                 .opacity(showTitle ? 1 : 0)
                 .offset(y: showTitle ? 0 : 12)
             
+            Text("Pick as many apps as you’d like to block.")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .frame(maxWidth: 300)
+                .opacity(showTitle ? 1 : 0)
+                .offset(y: showTitle ? 0 : 12)
+                .foregroundStyle(.white.opacity(0.7))
+
+            
             Spacer()
             
             MainButtonComponent(title: "Continue", action: onContinue)
