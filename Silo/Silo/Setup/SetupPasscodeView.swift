@@ -18,7 +18,7 @@ struct SetupPasscodeView: View {
     @FocusState private var isPasscodeFocused: Bool
 
     var body: some View {
-        VStack(spacing: 0) {
+        VStack {
             Spacer()
 
             VStack(spacing: 15) {
@@ -62,19 +62,19 @@ struct SetupPasscodeView: View {
         .padding(.horizontal)
         .padding(.bottom, 32)
         .onAppear {
-            withAnimation(.easeOut(duration: 0.8).delay(0.4)) {
+            withAnimation(.easeOut(duration: 0.8).delay(0.0)) {
                 showIntro = true
             }
 
-            withAnimation(.easeOut(duration: 0.8).delay(0.8)) {
+            withAnimation(.easeOut(duration: 0.8).delay(0.4)) {
                 showTitle = true
             }
 
-            withAnimation(.easeOut(duration: 0.8).delay(1.2)) {
+            withAnimation(.easeOut(duration: 0.8).delay(0.8)) {
                 showPasscodeInput = true
             }
 
-            withAnimation(.easeOut(duration: 0.8).delay(1.6)) {
+            withAnimation(.easeOut(duration: 0.8).delay(1.2)) {
                 showButton = true
             }
         }

@@ -26,6 +26,12 @@ struct SetupContentView: View {
                     userPasscode = passcode
                     goToNextPage()
                 }
+                
+            case 2:
+                SetupBlocksView {
+                    goToNextPage()
+                }
+                
 
             default:
                 MainContentView()
