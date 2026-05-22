@@ -7,6 +7,8 @@ import SwiftUI
 
 struct SetupContentView: View {
     @State private var currentPage = 0
+    @AppStorage("userPasscode") private var userPasscode = ""
+
 
     var body: some View {
         ZStack {
@@ -20,7 +22,8 @@ struct SetupContentView: View {
                 }
 
             case 1:
-                SetupPasscodeView {
+                SetupPasscodeView { passcode in
+                    userPasscode = passcode
                     goToNextPage()
                 }
 
