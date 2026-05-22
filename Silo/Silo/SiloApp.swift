@@ -11,7 +11,8 @@ import SwiftUI
 struct SiloApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SetupContentView()
+                .preferredColorScheme(.dark)
         }
     }
 }
