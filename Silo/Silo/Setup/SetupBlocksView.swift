@@ -22,14 +22,14 @@ struct SetupBlocksView: View {
                 .font(.title2)
                 .foregroundStyle(.white)
                 .opacity(showIntro ? 1 : 0)
-                .offset(y: showIntro ? 0 : 12)
+                .offset(y: showIntro ? 0 : 8)
 
             Text("2. Blocks")
                 .fontWeight(.semibold)
                 .font(.largeTitle)
                 .foregroundStyle(.white)
                 .opacity(showTitle ? 1 : 0)
-                .offset(y: showTitle ? 0 : 12)
+                .offset(y: showTitle ? 0 : 8)
             
             Text("Pick as many apps as you’d like to block.")
                 .font(.headline)
@@ -37,7 +37,7 @@ struct SetupBlocksView: View {
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 300)
                 .opacity(showTitle ? 1 : 0)
-                .offset(y: showTitle ? 0 : 12)
+                .offset(y: showTitle ? 0 : 8)
                 .foregroundStyle(.white.opacity(0.7))
 
             
@@ -48,22 +48,24 @@ struct SetupBlocksView: View {
                 MainButtonComponent(title: "Continue", action: onContinue)
             }
             .opacity(showButton ? 1 : 0)
-            .offset(y: showButton ? 0 : 12)
+            .offset(y: showButton ? 0 : 8)
             
         }
         .padding(.horizontal)
         .padding(.bottom, 32)
         .padding(.top, 32)
         .onAppear {
-            withAnimation(.easeOut(duration: 0.8).delay(0)) {
+            let entranceAnimation = Animation.spring(response: 0.65, dampingFraction: 0.88)
+
+            withAnimation(entranceAnimation.delay(0.25)) {
                 showIntro = true
             }
 
-            withAnimation(.easeOut(duration: 0.8).delay(0.4)) {
+            withAnimation(entranceAnimation.delay(0.42)) {
                 showTitle = true
             }
-            
-            withAnimation(.easeOut(duration: 0.8).delay(0.8)) {
+
+            withAnimation(entranceAnimation.delay(0.6)) {
                 showButton = true
             }
         }
