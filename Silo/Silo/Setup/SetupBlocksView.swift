@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct SetupBlocksView: View {
+    let onBack: () -> Void
     let onContinue: () -> Void
     
     @State private var showTitle = false
@@ -32,6 +33,7 @@ struct SetupBlocksView: View {
             
             Text("Pick as many apps as you’d like to block.")
                 .font(.headline)
+                .fontWeight(.medium)
                 .multilineTextAlignment(.center)
                 .frame(maxWidth: 300)
                 .opacity(showTitle ? 1 : 0)
@@ -41,9 +43,12 @@ struct SetupBlocksView: View {
             
             Spacer()
             
-            MainButtonComponent(title: "Continue", action: onContinue)
-                .opacity(showButton ? 1 : 0)
-                .offset(y: showButton ? 0 : 12)
+            HStack(spacing: 12) {
+                MainButtonComponent(title: "Back", style: .outline, action: onBack)
+                MainButtonComponent(title: "Continue", action: onContinue)
+            }
+            .opacity(showButton ? 1 : 0)
+            .offset(y: showButton ? 0 : 12)
             
         }
         .padding(.horizontal)
@@ -70,7 +75,7 @@ struct SetupBlocksView: View {
         Color.black
             .ignoresSafeArea()
 
-        SetupBlocksView {}
+        SetupBlocksView(onBack: {}, onContinue: {})
     }
     .tracking(-1.5)
     .preferredColorScheme(.dark)

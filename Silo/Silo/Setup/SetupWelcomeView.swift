@@ -17,16 +17,15 @@ struct SetupWelcomeView: View {
             Spacer()
 
             VStack(spacing: 5) {
-                Text("👋 Hello!")
-                    .font(.title2)
+                Text("Silo")
+                    .font(.largeTitle)
                     .fontWeight(.semibold)
                     .foregroundStyle(.white)
                     .opacity(showGreeting ? 1 : 0)
                     .offset(y: showGreeting ? 0 : 8)
 
                 Text("Let's get you set up.")
-                    .font(.title)
-                    .fontWeight(.semibold)
+                    .font(.title2)
                     .foregroundStyle(.white)
                     .opacity(showSubtitle ? 1 : 0)
                     .offset(y: showSubtitle ? 0 : 8)

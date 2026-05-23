@@ -6,9 +6,15 @@
 import SwiftUI
 
 struct MainButtonComponent: View {
+    enum Style {
+        case filled
+        case outline
+    }
+
     let title: String
+    var style: Style = .filled
     let action: () -> Void
-    
+
     @State private var hapticTrigger = false
 
     var body: some View {
@@ -19,11 +25,21 @@ struct MainButtonComponent: View {
             Text(title)
                 .font(.headline)
                 .tracking(-1)
-                .foregroundStyle(.black)
+                .foregroundStyle(style == .filled ? .black : .white)
                 .padding(.horizontal, 24)
                 .frame(minHeight: 48)
-                .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .background {
+                    if style == .filled {
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(.white)
+                    }
+                }
+                .overlay {
+                    if style == .outline {
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(.gray, lineWidth: 1)
+                    }
+                }
         }
         .sensoryFeedback(.impact(weight: .light), trigger: hapticTrigger)
     }

@@ -28,9 +28,10 @@ struct SetupContentView: View {
                 }
                 
             case 2:
-                SetupBlocksView {
-                    goToNextPage()
-                }
+                SetupBlocksView(
+                    onBack: goToPreviousPage,
+                    onContinue: goToNextPage
+                )
                 
 
             default:
@@ -42,6 +43,10 @@ struct SetupContentView: View {
 
     private func goToNextPage() {
         currentPage += 1
+    }
+
+    private func goToPreviousPage() {
+        currentPage -= 1
     }
 }
 
