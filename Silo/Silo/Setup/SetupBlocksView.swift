@@ -40,8 +40,60 @@ struct SetupBlocksView: View {
                 .offset(y: showTitle ? 0 : 8)
                 .foregroundStyle(.white.opacity(0.7))
 
+
+            Button { } label: {
+                HStack {
+                    Text("Select Apps")
+                        .font(.title3)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                    Spacer(minLength: 0)
+                    Image(systemName: "chevron.right")
+                        .font(.title3)
+                        .foregroundStyle(.white)
+                }
+                .padding(.horizontal, 20)
+                .frame(maxWidth: .infinity, minHeight: 70)
+                .background {
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(.white.opacity(0.1))
+                }
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.2), lineWidth: 1)
+                }
+            }
+            .buttonStyle(.plain)
+            .padding(.top, 15)
+
             
             Spacer()
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Block List")
+                    .font(.title3)
+                    .fontWeight(.semibold)
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(.white)
+            
+                Text("Select the apps you want to block.")
+                    .font(.subheadline)
+                    .foregroundStyle(.white.opacity(0.7))
+                Spacer()
+            }
+            .padding(.horizontal, -120)
+            .padding(.vertical, 22)
+            .frame(maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+            .background {
+                RoundedRectangle(cornerRadius: 20)
+                    .fill(.white.opacity(0.1))
+            }
+            .overlay {
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.white.opacity(0.2), lineWidth: 1)
+            } .padding(.vertical, 16)
+       
+           
             
             HStack(spacing: 12) {
                 MainButtonComponent(title: "Back", style: .outline, action: onBack)
@@ -51,7 +103,7 @@ struct SetupBlocksView: View {
             .offset(y: showButton ? 0 : 8)
             
         }
-        .padding(.horizontal)
+        .padding(.horizontal, 48)
         .padding(.bottom, 32)
         .padding(.top, 32)
         .onAppear {
