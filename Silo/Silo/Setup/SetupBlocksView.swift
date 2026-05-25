@@ -13,6 +13,8 @@ struct SetupBlocksView: View {
     
     @State private var showTitle = false
     @State private var showIntro = false
+    @State private var showSelectApps = false
+    @State private var showBlockList = false
     @State private var showButton = false
 
     var body: some View {
@@ -65,6 +67,8 @@ struct SetupBlocksView: View {
             }
             .buttonStyle(.plain)
             .padding(.top, 15)
+            .opacity(showSelectApps ? 1 : 0)
+            .offset(y: showSelectApps ? 0 : 8)
 
             
             Spacer()
@@ -91,7 +95,10 @@ struct SetupBlocksView: View {
             .overlay {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color.white.opacity(0.2), lineWidth: 1)
-            } .padding(.vertical, 16)
+            }
+            .padding(.vertical, 16)
+            .opacity(showBlockList ? 1 : 0)
+            .offset(y: showBlockList ? 0 : 8)
        
            
             
@@ -117,7 +124,15 @@ struct SetupBlocksView: View {
                 showTitle = true
             }
 
-            withAnimation(entranceAnimation.delay(0.6)) {
+            withAnimation(entranceAnimation.delay(0.59)) {
+                showSelectApps = true
+            }
+
+            withAnimation(entranceAnimation.delay(0.76)) {
+                showBlockList = true
+            }
+
+            withAnimation(entranceAnimation.delay(0.93)) {
                 showButton = true
             }
         }
